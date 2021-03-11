@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+*{
+box-sizing:border-box;
+margin:0px;
+}
+div.controls>button{
+cursor:pointer;
+padding:4px 16px;
+margin:5px;
+background-color:none;
+font-weight:bolder;
+font-size:15px;
+outline:none;
+border:2px solid ff6eff;
+border-radius:5px
+}
+div.controls>button:hover{
+background-color:red;
+color: white;
+border:1px solid #ff6eff;
+}
+div.largest-container{
+transform:scale(0,0);
+transition:transform 1s;
+border:5px solid #ff6eff;
+width:300px;
+height:500px;
+position:relative;
+margin: auto auto;
+background-image: linear-gradient(lightpink,pink,grey);
+border-radius:15px;
+}
+div.screen{
+border:4px outset #ff6eff;
+width:275px;
+height:80px;
+margin:10px;
+position:absolute;
+overflow:hidden;
+left:-5px;
+background-color:#2b2b2b;
+border-radius:12px;
+color: #ff6eff;
+font-family: monospace;
+}
+span.output{
+position:absolute;
+right:0px;
+bottom:0px;
+font-size:50px;
+font-weight:bold;
+
+}
+div.buttons{
+position: absolute;
+top:100px;
+left:18px;
+}
+button.button{
+font-size:25px;
+float:left;
+margin:6px;
+width:74px;
+text-align:center;
+padding:10px 20px;
+background-color:none;
+outline:none;
+border:1px solid blue;
+border-radius:8px;
+}
+button.button:hover{
+background-color:pink;
+}
+</style>
+
+
+<title> CALCULATOR</title>
+</head>
+<body>
+<div class="controls">
+<button id = "open" class="open">Open</button>
+<button id = "close" class="close">Closs</button>
+</div>
+<div id = "calc" class="largest-container">
+<div class="screen"><span id="output" class="output"></span></div>
+<div class="buttons">
+<button class="button cancel">CE</button>
+<button class="button mult">&times;</button>
+<button class="button divide">&divide;</button>
+<button class="button minus">&minus;</button>
+<button class="button plus">&plus;</button>
+<button class="button cancelAll">AC</button>
+<button class="button seven">7</button>
+<button class="button eight">8</button>
+<button class="button nine">9</button>
+<button class="button four">4</button>
+<button class="button five">5</button>
+<button class="button six">6</button>
+<button class="button seven">1</button>
+<button class="button eight">2</button>
+<button class="button nine">3</button>
+<button class="button zero">0</button>
+<button class="button dot">.</button>
+<button class="button equal">&equals;</button>
+</div>
+</div>
+<script>
+
+let button = document.getElementsByClassName("button");
+let closeCal = document.getElementById("close");
+let calculator = document.getElementById("calc");
+let screen = document.getElementById("output");
+let openCal = document.getElementById("open");
+button[0].addEventListener("click",()=>screen.innerText=screen.innerText.split("").slice(0,screen.innerText.length-1).join(""));
+
+button[1].addEventListener("click",()=>screen.innerText+="*");
+
+button[2].addEventListener("click",()=>screen.innerText+="/");
+
+button[3].addEventListener("click",()=>screen.innerText+="-");
+
+button[4].addEventListener("click",()=>screen.innerText+="+");
+
+button[5].addEventListener("click",()=>screen.innerText="");
+
+button[6].addEventListener("click",()=>screen.innerText+="7");
+
+button[7].addEventListener("click",()=>screen.innerText+="8");
+
+button[8].addEventListener("click",()=>screen.innerText+="9");
+
+button[9].addEventListener("click",()=>screen.innerText+="4");
+
+button[10].addEventListener("click",()=>screen.innerText+="5");
+
+button[11].addEventListener("click",()=>screen.innerText+="6");
+
+button[12].addEventListener("click",()=>screen.innerText+="1");
+
+button[13].addEventListener("click",()=>screen.innerText+="2");
+
+button[14].addEventListener("click",()=>screen.innerText+="3");
+
+button[15].addEventListener("click",()=>screen.innerText+="0");
+
+button[16].addEventListener("click",()=>screen.innerText+=".");
+
+function calculate(){
+screen.innerText = eval(screen.innerText) || "";
+}
+
+button[17].addEventListener("click",calculate,false);
+
+function calcTrans(){
+calculator.style.transform = "scale(1,1)"
+}
+openCal.addEventListener("click",calcTrans,false)
+
+closeCal.addEventListener("click",()=>{
+calculator.style.transform = "scale(0,0)";
+},false)
+</script>
+</body>
+</html>
